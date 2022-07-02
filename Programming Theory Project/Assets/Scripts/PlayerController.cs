@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 10.0f;
+    private float m_Speed = 10.0f;
+    public float speed
+    {
+        get { return m_Speed; } 
+        set { speed = value; }
+    }
+
     private Rigidbody playerRb;
     private float zBound = 4;
 
@@ -26,8 +32,8 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+        playerRb.AddForce(Vector3.forward * m_Speed * verticalInput);
+        playerRb.AddForce(Vector3.right * m_Speed * horizontalInput);
     }
 
     private void Bound()
